@@ -31,17 +31,46 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const database = getDatabase(app);
-        const belize = "/17/nation";
+        const DBLEN = 195;
 
+        let option, nation;
+        let options = [];
+        let correct;
+        let img;
+
+        // numero random da una lista per evitare nazioni doppie
+        function rand() {
+            let list = [];
+            for(let i = 0; i < DBLEN; i++)
+                list.push(i);
+            let casuale = Math.floor(Math.random() * list.length);
+            option = list[casuale];
+            list.splice(casuale, 1);
+            nation = `/${option}/`;
+        }
+
+        // get bandiera
         function getFlag() {
-            const dataRef = ref(database, belize);
+            rand();
+            const dataRef = ref(database, nation);
             onValue(dataRef, (data) => {
                 const flag = data.val();
-                console.log(flag);
+                options.push(flag);
             });
         }
 
-        getFlag();
+        
+        // riempie le 4 opzioni
+        function fill() {
+            for(let i = 0; i < 4; i++)
+                getFlag();
+            setTimeout(() => {
+                correct = options[0];
+                img = correct.URL_ID;
+            }, 1000);
+        }
+
+        fill();
     </script>
 </body> 
 </html>
