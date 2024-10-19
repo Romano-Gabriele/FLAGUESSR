@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>FLAGUESSR</title>
 </head>
 <body>
     <button onclick="start()">Gioca</button>
-</body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+        import { ref } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+        import { onValue } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+        
+        const firebaseConfig = {
+          apiKey: "AIzaSyBCnzOJzpM0eg0gMHiTsyKHTg4qP61ClSA",
+          authDomain: "test-bf5e4.firebaseapp.com",
+          databaseURL: "https://test-bf5e4-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "test-bf5e4",
+          storageBucket: "test-bf5e4.appspot.com",
+          messagingSenderId: "131268407638",
+          appId: "1:131268407638:web:4886d75d4c9c3ee18fe6f7",
+          measurementId: "G-8E66K12NWX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+        const belize = "/17/nation";
+
+        function getFlag() {
+            const dataRef = ref(database, belize);
+            onValue(dataRef, (data) => {
+                const flag = data.val();
+                console.log(flag);
+            });
+        }
+
+        getFlag();
+    </script>
+</body> 
 </html>
