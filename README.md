@@ -1,2 +1,0 @@
-# FLAGUESSR
-Guess the flag!
