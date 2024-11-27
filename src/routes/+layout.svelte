@@ -12,6 +12,11 @@
         padding: 0;
     }
 
+    :global(.container) {
+        height: 100%;
+        background: linear-gradient(135deg, #2c2c2c, #4f4f4f); /* gradiente scala di grigi */
+    }
+
     :global(body) {
         width: 100vw;
         height: 100vh;

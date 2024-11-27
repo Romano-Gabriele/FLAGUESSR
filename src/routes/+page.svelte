@@ -16,13 +16,11 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap'); /* Importa font Roboto Slab */
 
-    :global(.container) {
+    .container {
         display: flex;
         flex-direction: column;
-        height: 100%;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #2c2c2c, #4f4f4f); /* gradiente scala di grigi */
     }
 
     a {
