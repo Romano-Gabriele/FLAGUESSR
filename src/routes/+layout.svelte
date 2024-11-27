@@ -39,19 +39,20 @@
     }
 
     header {
-        height: 5%;
+        height: 5vh;
         width: 100%;
         border: 1px solid black;
     }
 
     main {
-        height: 91.5%;
+        height: 91.5vh;
         width: 100%;
         border: 1px solid black;
+        overflow: hidden;
     }
     
     footer {
-        height: 3.5%;
+        height: 3.5vh;
         width: 100%;
         border: 1px solid black; 
     }
