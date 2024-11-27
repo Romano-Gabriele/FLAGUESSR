@@ -4,9 +4,9 @@
 </script>
 
 <div>
-    <Arrow direction='left' /> 
+    <Arrow direction='dir-left' direzione='left' /> 
     <Flag src="https://www.worldometers.info/img/flags/al-flag.gif" />
-    <Arrow direction='right' />
+    <Arrow direction='dir-right' />
 </div>
 
 <style>
