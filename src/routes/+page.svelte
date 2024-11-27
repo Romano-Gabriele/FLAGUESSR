@@ -1,3 +1,9 @@
+<script>
+    import Taskbar from "../components/taskbar.svelte";
+    
+    let current = 1;
+</script>
+
 <div class="container">
     <a href="/learning" class="button" data-text="Awesome">
         <span class="actual-text">&nbsp;Play&nbsp;&nbsp;Flaguessr&nbsp;</span>
@@ -5,10 +11,12 @@
     </a>
 </div>
 
+<Taskbar bind:selection={current}/>
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap'); /* Importa font Roboto Slab */
 
-    .container {
+    :global(.container) {
         display: flex;
         flex-direction: column;
         height: 100%;

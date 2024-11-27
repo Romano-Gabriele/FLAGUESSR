@@ -1,4 +1,3 @@
-
 <header>
     <h1>FLAGUESSR</h1>
 </header>
@@ -6,10 +5,6 @@
 <main>
     <slot />
 </main>
-
-<footer>
-    <h3>footer</h3>
-</footer>
 
 <style>
     :global(*) {
@@ -41,19 +36,11 @@
     header {
         height: 5vh;
         width: 100%;
-        border: 1px solid black;
     }
 
     main {
-        height: 91.5vh;
+        height: 95vh;
         width: 100%;
-        border: 1px solid black;
         overflow: hidden;
-    }
-    
-    footer {
-        height: 3.5vh;
-        width: 100%;
-        border: 1px solid black; 
     }
 </style>
