@@ -1,11 +1,12 @@
 <script>
     export let direction;
     export let direzione;
+    export let handler;
 </script>
 
 <!-- <div class={direction}></div>-->
 
-<button class="learn-more {direction} {direzione}">
+<button class="learn-more {direction} {direzione}" on:click={handler}>
     <span class="circle {direction}" aria-hidden="true">
         <span class="icon arrow {direction}"></span>
     </span>

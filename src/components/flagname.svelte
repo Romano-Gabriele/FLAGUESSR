@@ -3,6 +3,3 @@
 </script>
 
 <h2>{name}</h2>
-
-<style>
-</style>
