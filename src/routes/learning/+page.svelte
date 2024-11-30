@@ -4,37 +4,25 @@
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import Taskbar from "../../components/taskbar.svelte";
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "firebase/app";
     import { getDatabase, ref, child, get } from "firebase/database";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyBCnzOJzpM0eg0gMHiTsyKHTg4qP61ClSA",
-      authDomain: "test-bf5e4.firebaseapp.com",
-      databaseURL: "https://test-bf5e4-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "test-bf5e4",
-      storageBucket: "test-bf5e4.firebasestorage.app",
-      messagingSenderId: "131268407638",
-      appId: "1:131268407638:web:9a35aa84e8b546148fe6f7",
-      measurementId: "G-36J40GW5P2"
-    };
-    
-    let flagUrl, name;
-    let ind = 0;
-    let current = 2;
+    import { initializeApp } from "firebase/app";
+    import { firebaseConfig } from "../../lib/firebase";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
     const database = getDatabase(app);
+    
+    let flagUrl, name;
+    let dbLen = 195;
+    let ind = 0;
+    let current = 2;
 
     onMount(() => getFlagData());
 
-
-    async function getFlagData() {
+    // Funzione per prendere i dati di una bandiera
+    export async function getFlagData() {
         const dbRef = ref(getDatabase());
         try {
             const snapshot = await get(child(dbRef, `${ind}/`));
@@ -44,7 +32,6 @@
                 name = data.nation;
             }
             else {
-                console.log(ind);
                 console.error("Nessun dato trovato per questa bandiera");
             }
         } catch (error) {
@@ -52,13 +39,27 @@
         }
     };
 
+    /*// Funzione per registrare un nuovo utente
+    async function registerUser(email, password) {
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            console.log('Utente registrato:', userCredential.user);
+        } catch (error) {
+            console.error(error.message);
+        }
+    };*/
+
     function incrementa() {
         ind++;
+        if(ind >= dbLen)
+            ind = 0;
         getFlagData();
     };
 
     function decrementa() {
         ind--;
+        if(ind < 0)
+            ind = dbLen - 1;
         getFlagData();
     };
 </script>

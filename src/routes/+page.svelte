@@ -1,6 +1,6 @@
 <script>
     import Taskbar from "../components/taskbar.svelte";
-    
+
     let current = 1;
 </script>
 
@@ -14,7 +14,7 @@
 <Taskbar bind:selection={current}/>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap'); /* Importa font Roboto Slab */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap'); /* Roboto Slab */
 
     .container {
         display: flex;
@@ -25,20 +25,20 @@
 
     a {
         display: inline-block;
-        padding: 15px 30px; /* dimensioni più grandi */
-        border-radius: 20px; /* bordi più arrotondati */
-        background: rgba(240, 240, 240, 0.1); /* sfondo semi-trasparente */
+        padding: 15px 30px;
+        border-radius: 20px;
+        background: rgba(240, 240, 240, 0.1);
         backdrop-filter: blur(10px);
         transition: all 0.4s ease-in-out;
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* ombra del bottone */
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
     }
 
     a:hover {
-        background: #f0f0f0; /* sfondo bianco */
+        background: #f0f0f0;
         transform: scale(1.15);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* ombra più accentuata */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
-    /* === removing default button style ===*/
+
     .button {
         margin: 0;
         height: auto;
@@ -48,7 +48,6 @@
         cursor: pointer;
     }
 
-    /* button styling */
     .button {
         --border-right: 6px;
         --text-stroke-color: rgba(255,255,255,0.6);
@@ -63,7 +62,7 @@
         color: transparent;
         -webkit-text-stroke: 1px var(--text-stroke-color);
     }
-    /* this is the text, when you hover on button */
+    
     .hover-text {
         position: absolute;
         box-sizing: border-box;
@@ -76,7 +75,7 @@
         transition: 0.5s;
         -webkit-text-stroke: 1px var(--animation-color);
     }
-    /* hover */
+    
     .button:hover .hover-text {
         width: 100%;
         filter: drop-shadow(0 0 23px var(--animation-color))
