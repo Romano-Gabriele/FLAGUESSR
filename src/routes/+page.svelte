@@ -5,7 +5,7 @@
 </script>
 
 <div class="container">
-    <a href="/learning" class="button" data-text="Awesome">
+    <a href="/game" class="button" data-text="Awesome">
         <span class="actual-text">&nbsp;Play&nbsp;&nbsp;Flaguessr&nbsp;</span>
         <span aria-hidden="true" class="hover-text">&nbsp;Play&nbsp;&nbsp;Flaguessr&nbsp;</span>
     </a>
