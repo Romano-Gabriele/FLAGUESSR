@@ -7,17 +7,17 @@
     <div class="flag">
         <Flag></Flag>
     </div>
-    <div class="option top left">
-        <Flagname></Flagname>
-    </div>
+    <button class="option top left">
+        <Flagname name="test"></Flagname>
+    </button>
     <div class="option top right">
-        <Flagname></Flagname>
+        <Flagname name="test"></Flagname>
     </div>
     <div class="option left">
-        <Flagname></Flagname>
+        <Flagname name="test"></Flagname>
     </div>
     <div class="option right">
-        <Flagname></Flagname>
+        <Flagname name="test"></Flagname>
     </div>
 </div>
 

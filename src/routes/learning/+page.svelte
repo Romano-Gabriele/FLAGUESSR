@@ -4,22 +4,13 @@
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import Taskbar from "../../components/taskbar.svelte";
-    import { getDatabase, ref, child, get } from "firebase/database";
-    import { initializeApp } from "firebase/app";
-    import { firebaseConfig } from "../../lib/firebase";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const database = getDatabase(app);
     
     let flagUrl, name;
-    let dbLen = 195;
+    export let dbLen = 195;
     let ind = 0;
     let current = 2;
 
-    onMount(() => getFlagData());
+    onMount(() => getFlagData(ind));
 
     // Funzione per prendere i dati di una bandiera
     export async function getFlagData() {
