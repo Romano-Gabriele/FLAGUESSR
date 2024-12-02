@@ -4,7 +4,7 @@
 
 <div class="taskbar">
     <a href="../profile" class="taskbar-item {selection === 0 ? 'active' : ''}">Profilo</a>
-    <a href="../" class="taskbar-item {selection === 1 ? 'active' : ''}">Home</a>
+    <a href="../home" class="taskbar-item {selection === 1 ? 'active' : ''}">Home</a>
     <a href="../learning" class="taskbar-item {selection === 2 ? 'active' : ''}">Learning</a>
 </div>
 

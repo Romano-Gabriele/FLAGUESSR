@@ -1,57 +1,30 @@
 <script>
-    import { onMount } from "svelte";
     import Arrow from "../../components/arrow.svelte";
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import Taskbar from "../../components/taskbar.svelte";
+    import { lista } from "../../lib/helper";
+
+    $: {
+        flagUrl = lista[ind].URL_ID;
+        name = lista[ind].nation;
+    }
     
     let flagUrl, name;
-    export let dbLen = 195;
+    let dbLen = 195;
     let ind = 0;
     let current = 2;
-
-    onMount(() => getFlagData(ind));
-
-    // Funzione per prendere i dati di una bandiera
-    export async function getFlagData() {
-        const dbRef = ref(getDatabase());
-        try {
-            const snapshot = await get(child(dbRef, `${ind}/`));
-            if(snapshot.exists()) {
-                const data = snapshot.val();
-                flagUrl = data.URL_ID;
-                name = data.nation;
-            }
-            else {
-                console.error("Nessun dato trovato per questa bandiera");
-            }
-        } catch (error) {
-            console.error("Errore nel recupero dei dati:", error);
-        }
-    };
-
-    /*// Funzione per registrare un nuovo utente
-    async function registerUser(email, password) {
-        try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            console.log('Utente registrato:', userCredential.user);
-        } catch (error) {
-            console.error(error.message);
-        }
-    };*/
 
     function incrementa() {
         ind++;
         if(ind >= dbLen)
             ind = 0;
-        getFlagData();
     };
 
     function decrementa() {
         ind--;
         if(ind < 0)
             ind = dbLen - 1;
-        getFlagData();
     };
 </script>
 
