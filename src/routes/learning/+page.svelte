@@ -3,11 +3,11 @@
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import Taskbar from "../../components/taskbar.svelte";
-    import { lista } from "../../lib/helper";
+    import { data } from "../../lib/helper";
 
     $: {
-        flagUrl = lista[ind].URL_ID;
-        name = lista[ind].nation;
+        flagUrl = data[ind].URL_ID;
+        name = data[ind].nation;
     }
     
     let flagUrl, name;

@@ -1,30 +1,64 @@
 <script>
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
+    import { data } from "../../lib/helper";
+
+    let flagList = [];
+    let nameList = [];
+    let n = Math.trunc(Math.random() * 195);
+    let options = [];
+
+    console.log(n);
+
+    function riempi(lista, chiave) {
+        let fill;
+        for(let i = 0; i < data.length; i++) {
+            if(chiave == 0)
+                fill = data[i].URL_ID;
+            else
+                fill = data[i].nation;
+            
+            lista[i] = fill;
+        }
+        return lista;
+    }
+
+    flagList = riempi(flagList, 0);
+    nameList = riempi(nameList, 1);
+
+    options.push(nameList[n]);
+
+    function riempiOptions() {
+        for(let i = 0; i < 4; i++) {
+            let n = nameList[Math.random() * 195];
+            options.push(n);
+        }
+    }
 </script>
 
 <div class="container">
     <div class="flag">
-        <Flag></Flag>
+        <Flag src={flagList[n]}></Flag>
     </div>
     <button class="option top left">
+        <Flagname name={options[0]}></Flagname>
+    </button>
+    <button class="option top right">
         <Flagname name="test"></Flagname>
     </button>
-    <div class="option top right">
+    <button class="option left">
         <Flagname name="test"></Flagname>
-    </div>
-    <div class="option left">
+    </button>
+    <button class="option right">
         <Flagname name="test"></Flagname>
-    </div>
-    <div class="option right">
-        <Flagname name="test"></Flagname>
-    </div>
+    </button>
 </div>
 
 <style>
     * {
         border: 2px solid yellow;
     }
+
     .container {
         display: grid;
         grid-template-rows: repeat(3, 1fr);
@@ -50,6 +84,7 @@
         justify-content: center;
         align-items: center;
         border-radius: 30px;
+        background: linear-gradient(135deg, #2c2c2c, #4f4f4f);
     }
 
     .top {

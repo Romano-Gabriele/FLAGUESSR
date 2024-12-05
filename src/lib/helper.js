@@ -1,7 +1,7 @@
 import { getDatabase, ref, child, get } from "firebase/database";
 
 let dbLen = 195;
-export let lista = [];
+export let data = [];
 
 export async function getFlagData() {
     const dbRef = ref(getDatabase());
@@ -10,7 +10,7 @@ export async function getFlagData() {
             const snapshot = await get(child(dbRef, `${i}/`));
             if(snapshot.exists()) {
               console.log(1);
-              lista.push(snapshot.val());
+              data.push(snapshot.val());
             }
             else {
                 console.error("Nessun dato trovato per questa bandiera");
