@@ -7,6 +7,7 @@
             visible.set(true); // Imposta visibilità su true al montaggio
         });
 
+
 </script>
 
 <div class="taskbar {$visible ? 'slide-up' : ''}">
@@ -46,14 +47,14 @@
     }
 
     .taskbar-item:hover {
-        color: #ff37b2;
+        color: #DB1317;
         transform: scale(1.1);
     }
 
     .taskbar-item.active {
-        color: #ff37b2;
+        color: #DB1317;
         font-weight: bold;
-        border-bottom: 2px solid #ff37b2;
+        border-bottom: 2px solid #DB1317;
     }
 
     a {

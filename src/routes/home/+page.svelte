@@ -59,7 +59,8 @@
     .button {
         --border-right: 6px;
         --text-stroke-color: rgba(255,255,255,0.6);
-        --animation-color: #ff37b2;
+        /* --animation-color: #13DB17; */
+        --animation-color: #DB1317;
         --fs-size: 3em;
         letter-spacing: 3px;
         text-decoration: none;

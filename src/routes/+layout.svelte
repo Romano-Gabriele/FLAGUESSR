@@ -3,7 +3,8 @@
 </script>
 
 <header class="{$visible ? 'slide-down' : ''}">
-    <h1>FLAGUESSR</h1>
+    <img src="logos/flaguessr-icon.png" alt="flaguessr_icon">
+    <img src="logos/flaguessr_logo.png" alt="flaguessr_Logo">
 </header>
 
 <main>
@@ -53,10 +54,10 @@
     }
 
     header {
-        height: 5vh;
+        height: 6.5vh;
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         background-color: #000000;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -64,6 +65,13 @@
         position: fixed;
         top: -100px; /* Posizione iniziale fuori dalla vista */
         transition: transform 0.75s ease-in-out;
+        gap: 0.5%;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    header > * {
+        height: 5vh;
     }
 
     main {
