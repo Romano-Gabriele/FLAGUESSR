@@ -1,17 +1,18 @@
 <script>
     import Taskbar from "../../components/taskbar.svelte";
+    import { visible } from '../../stores/style';
 
     let current = 1;
 </script>
 
 <div class="container">
-    <a href="/game" class="button" data-text="Awesome">
+    <a href="/game" class="button {$visible ? 'visible' : ''}" data-text="Awesome">
         <span class="actual-text">&nbsp;Play&nbsp;&nbsp;Flaguessr&nbsp;</span>
         <span aria-hidden="true" class="hover-text">&nbsp;Play&nbsp;&nbsp;Flaguessr&nbsp;</span>
     </a>
 </div>
 
-<Taskbar bind:selection={current}/>
+<Taskbar bind:selection={current} />
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap'); /* Roboto Slab */
@@ -29,8 +30,15 @@
         border-radius: 20px;
         background: rgba(240, 240, 240, 0.1);
         backdrop-filter: blur(10px);
-        transition: all 0.4s ease-in-out;
+        transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
         box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        opacity: 0; /* Inizialmente invisibile */
+        transform: translateY(30px); /* Posizione iniziale */
+    }
+
+    a.visible {
+        opacity: 1; /* Visibile quando la classe è attiva */
+        transform: translate(0); /* Posizione finale */
     }
 
     a:hover {
@@ -78,6 +86,6 @@
     
     .button:hover .hover-text {
         width: 100%;
-        filter: drop-shadow(0 0 23px var(--animation-color))
+        filter: drop-shadow(0 0 23px var(--animation-color));
     }
 </style>

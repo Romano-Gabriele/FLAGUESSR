@@ -1,5 +1,4 @@
 <script>
-    import { goto } from '$app/navigation';
     import { initializeApp } from "firebase/app";
     import { firebaseConfig } from "../lib/firebase";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
@@ -14,7 +13,7 @@
     getFlagData();
 
     let loaded = () => {
-        goto('/home');
+        window.location.href = '/home';
     };
 </script>
 

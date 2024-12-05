@@ -1,4 +1,8 @@
-<header>
+<script>
+    import { visible } from "../stores/style";
+</script>
+
+<header class="{$visible ? 'slide-down' : ''}">
     <h1>FLAGUESSR</h1>
 </header>
 
@@ -20,6 +24,7 @@
     :global(body) {
         width: 100vw;
         height: 100vh;
+        background: linear-gradient(135deg, #2c2c2c, #4f4f4f);
     }
 
     /* Barretta di scorrimento trasparente */
@@ -38,14 +43,33 @@
         border: 3px solid rgba(0, 0, 0, 0.2); /* Aggiunge spazio trasparente attorno al thumb */
     }
 
+    :global(*::-webkit-scrollbar-thumb) {
+        border-radius: 10px;
+        border: 3px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .slide-down {
+        transform: translateY(100px); /* Posizione visibile */
+    }
+
     header {
         height: 5vh;
         width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #000000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        color: white;
+        position: fixed;
+        top: -100px; /* Posizione iniziale fuori dalla vista */
+        transition: transform 0.75s ease-in-out;
     }
 
     main {
         height: 95vh;
         width: 100%;
         overflow: hidden;
+        padding-top: 5vh; /* Per evitare sovrapposizione con l'header */
     }
 </style>

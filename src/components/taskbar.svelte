@@ -1,8 +1,15 @@
 <script>
+    import { onMount } from "svelte";
+    import { visible } from '../stores/style';   
     export let selection;
+
+    onMount(() => {
+            visible.set(true); // Imposta visibilità su true al montaggio
+        });
+
 </script>
 
-<div class="taskbar">
+<div class="taskbar {$visible ? 'slide-up' : ''}">
     <a href="../profile" class="taskbar-item {selection === 0 ? 'active' : ''}">Profilo</a>
     <a href="../home" class="taskbar-item {selection === 1 ? 'active' : ''}">Home</a>
     <a href="../learning" class="taskbar-item {selection === 2 ? 'active' : ''}">Learning</a>
@@ -11,14 +18,22 @@
 <style>
     .taskbar {
         position: fixed;
-        bottom: 0;
-        width: 100%;
+        bottom: -100px; /* Posizione iniziale fuori dalla vista */
+        width: 90%;
+        left: 5%;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: #000000;
         box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
         padding: 10px 0;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        transition: transform 0.75s ease-in; /* Transizione per il movimento */
+    }
+
+    .slide-up {
+        transform: translateY(-100px); /* Posizionamento finale visibile */
     }
 
     .taskbar-item {
@@ -43,17 +58,17 @@
 
     a {
         display: inline-block;
-        padding: 15px 30px; /* dimensioni più grandi */
-        border-radius: 20px; /* bordi più arrotondati */
-        background: rgba(240, 240, 240, 0.1); /* sfondo semi-trasparente */
+        padding: 15px 30px;
+        border-radius: 20px;
+        background: rgba(240, 240, 240, 0.1);
         backdrop-filter: blur(10px);
         transition: all 0.4s ease-in-out;
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* ombra del bottone */
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
     }
 
     a:hover {
-        background: #f0f0f0; /* sfondo bianco */
+        background: #f0f0f0;
         transform: scale(1.15);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* ombra più accentuata */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 </style>
