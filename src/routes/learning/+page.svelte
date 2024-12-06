@@ -3,12 +3,14 @@
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import Taskbar from "../../components/taskbar.svelte";
-    import { data } from "../../lib/helper";
+    import { data } from "../../stores/data";
 
     $: {
-        flagUrl = data[ind].URL_ID;
-        name = data[ind].nation;
+        //flagUrl = data[ind].URL_ID;
+        //name = data[ind].nation;
     }
+
+    console.log($data);
     
     let flagUrl, name;
     let dbLen = 195;

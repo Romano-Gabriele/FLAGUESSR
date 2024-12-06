@@ -1,7 +1,9 @@
 <script>
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
-    import { data } from "../../lib/helper";
+    import { data } from "../../stores/data";
+
+    console.log($data);
 
     let flagList = [];
     let nameList = [];
