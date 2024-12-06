@@ -70,17 +70,17 @@
         width: 120px;
         height: 120px;
         border-radius: 50%;
-        border-bottom: 5px solid #ff37b2;
-        border-right: 5px solid #ff37b2;
-        border-left: 5px solid #ff37b2;
-        border-top: 0 solid #ff37b2;
-        box-shadow: 0 0 10px #ff37b2;
+        border-bottom: 5px solid #DD1317;
+        border-right: 5px solid #DD1317;
+        border-left: 5px solid #DD1317;
+        border-top: 0 solid #DD1317;
+        box-shadow: 0 0 10px #DD1317;
     }
 
     .username {
         margin-top: 15px;
         font-size: 2rem;
-        color: #ff37b2;
+        color: #DD1317;
     }
 
     .profile-stats {
@@ -99,7 +99,7 @@
     .stat h2 {
         font-size: 1.2rem;
         margin-bottom: 10px;
-        color: #ff37b2;
+        color: #DD1317;
     }
 
     .stat p {
@@ -118,15 +118,15 @@
         font-weight: bold;
         color: #f0f0f0;
         text-decoration: none;
-        border: 2px solid #ff37b2;
+        border: 2px solid #DD1317;
         border-radius: 50px;
         background: rgba(240, 240, 240, 0.1);
         transition: all 0.3s ease-in-out;
     }
 
     .btn:hover {
-        background: #ff37b2;
+        background: #DD1317;
         color: #2c2c2c;
-        box-shadow: 0 6px 10px rgba(255, 55, 178, 0.5);
+        box-shadow: 0 6px 10px rgba(255, 55, 55, 0.5);
     }
 </style>
