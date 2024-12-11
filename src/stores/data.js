@@ -1,3 +1,6 @@
 import { writable } from 'svelte/store';
 
-export let data = writable([]);
+let stored = sessionStorage.getItem('flags');
+let flags = JSON.parse(stored);
+
+export let data = writable(flags);

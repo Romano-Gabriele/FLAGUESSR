@@ -1,9 +1,12 @@
 <script>
+    import { onMount } from "svelte";
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import { data } from "../../stores/data";
 
-    console.log($data);
+    onMount(() => {
+        data.set(JSON.parse(sessionStorage.getItem('flags')));
+    })
 
     let flagList = [];
     let nameList = [];
@@ -14,11 +17,11 @@
 
     function riempi(lista, chiave) {
         let fill;
-        for(let i = 0; i < data.length; i++) {
+        for(let i = 0; i < $data.length; i++) {
             if(chiave == 0)
-                fill = data[i].URL_ID;
+                fill = $data[i].URL_ID;
             else
-                fill = data[i].nation;
+                fill = $data[i].nation;
             
             lista[i] = fill;
         }

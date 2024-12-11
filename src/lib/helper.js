@@ -1,5 +1,4 @@
 import { getDatabase, ref, child, get } from "firebase/database";
-import { data } from "../stores/data";
 
 let dbLen = 195;
 
@@ -17,11 +16,11 @@ export async function getFlagData() {
                 console.error("Nessun dato trovato per questa bandiera");
             }
         }
+
+        sessionStorage.setItem('flags', JSON.stringify(flags));
     } catch (error) {
         console.error("Errore nel recupero dei dati:", error);
     }
-
-    data.set(flags);
 };
 
 /*export async function storeData() {

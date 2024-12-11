@@ -14,6 +14,7 @@
   getFlagData();
   
   let loaded = () => {
+    //await getFlagData();
     goto('/home');
   };
 </script>
