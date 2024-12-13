@@ -1,6 +1,11 @@
 <script>
     import Taskbar from "../../components/taskbar.svelte";
     import { visible } from '../../stores/style';
+    import { onMount } from "svelte";
+
+    onMount(() => {
+            visible.set(true); // Imposta visibilità su true al montaggio
+    });
 
     let current = 1;
 </script>

@@ -1,13 +1,6 @@
 <script>
-    import { onMount } from "svelte";
     import { visible } from '../stores/style';   
     export let selection;
-
-    onMount(() => {
-            visible.set(true); // Imposta visibilità su true al montaggio
-        });
-
-
 </script>
 
 <div class="taskbar {$visible ? 'slide-up' : ''}">
