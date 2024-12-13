@@ -4,7 +4,9 @@
     import { onMount } from "svelte";
 
     onMount(() => {
-            visible.set(true); // Imposta visibilità su true al montaggio
+        setTimeout(() => {
+            $visible = true;
+        }, 250)
     });
 
     let current = 1;
