@@ -3,12 +3,7 @@
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import Taskbar from "../../components/taskbar.svelte";
-    import { data } from "../../lib/helper";
-
-    $: {
-        flagUrl = data[ind].URL_ID;
-        name = data[ind].nation;
-    }
+    import { data } from "../../stores/data";
     
     let flagUrl, name;
     let dbLen = 195;
@@ -26,6 +21,11 @@
         if(ind < 0)
             ind = dbLen - 1;
     };
+
+    $: {
+        flagUrl = $data[ind].URL_ID;
+        name = $data[ind].nation;
+    }
 </script>
 
 <div class="container">

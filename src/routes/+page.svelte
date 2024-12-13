@@ -1,18 +1,21 @@
 <script>
   import { initializeApp } from "firebase/app";
   import { firebaseConfig } from "../lib/firebase";
-  import { getAuth } from "firebase/auth";
-  import { getDatabase } from "firebase/database";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+  import { getDatabase } from 'firebase/database';
   import { getFlagData } from "../lib/helper";
+  import { goto } from "$app/navigation";
 
+  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const database = getDatabase(app);
 
   getFlagData();
-
+  
   let loaded = () => {
-      window.location.href = '/home';
+    //await getFlagData();
+    goto('/home');
   };
 </script>
 

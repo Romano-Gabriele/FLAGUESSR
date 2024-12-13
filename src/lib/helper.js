@@ -1,25 +1,31 @@
 import { getDatabase, ref, child, get } from "firebase/database";
 
 let dbLen = 195;
-export let data = [];
 
 export async function getFlagData() {
+    let flags = [];
     const dbRef = ref(getDatabase());
     try {
         for(let i = 0; i < dbLen; i++) {
             const snapshot = await get(child(dbRef, `${i}/`));
             if(snapshot.exists()) {
               console.log(1);
-              data.push(snapshot.val());
+              flags.push(snapshot.val());
             }
             else {
                 console.error("Nessun dato trovato per questa bandiera");
             }
         }
+
+        sessionStorage.setItem('flags', JSON.stringify(flags));
     } catch (error) {
         console.error("Errore nel recupero dei dati:", error);
     }
 };
+
+/*export async function storeData() {
+    data = await getFlagData();
+  }*/
 
 /*// Funzione per registrare un nuovo utente
     async function registerUser(email, password) {
