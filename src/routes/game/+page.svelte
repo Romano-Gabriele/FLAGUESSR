@@ -5,39 +5,75 @@
     import { data } from "../../stores/data";
 
     onMount(() => {
-        data.set(JSON.parse(sessionStorage.getItem('flags')));
+        data.set(JSON.parse(localStorage.getItem('flags')));
     })
 
-    let flagList = [];
-    let nameList = [];
-    let n = Math.trunc(Math.random() * 195);
-    let options = [];
+    let flagList;
+    let nameList;
+    let options;
+    let correctName;
+    let score = 0;
+    let n;
 
-    console.log(n);
+    game();
 
-    function riempi(lista, chiave) {
-        let fill;
-        for(let i = 0; i < $data.length; i++) {
-            if(chiave == 0)
-                fill = $data[i].URL_ID;
-            else
-                fill = $data[i].nation;
-            
-            lista[i] = fill;
+    function isCorrect(option) {
+        let correct = option == correctName ? 1 : 0;
+        if(correct) {
+            score++;
+            game(score);
         }
-        return lista;
+        else
+            alert("game ends");
     }
 
-    flagList = riempi(flagList, 0);
-    nameList = riempi(nameList, 1);
+    function game(score) {
+        n = Math.trunc(Math.random() * 195);
+        flagList = [];
+        nameList = [];
+        options = [];
+        console.log(n);
+        console.log("score = ", score);
 
-    options.push(nameList[n]);
+        function riempi(lista, chiave) {
+            let fill;
+            for(let i = 0; i < $data.length; i++) {
+                if(chiave == 0)
+                    fill = $data[i].URL_ID;
+                else
+                    fill = $data[i].nation;
 
-    function riempiOptions() {
-        for(let i = 0; i < 4; i++) {
-            let n = nameList[Math.random() * 195];
-            options.push(n);
+                lista[i] = fill;
+            }
+            return lista;
         }
+
+        flagList = riempi(flagList, 0);
+        nameList = riempi(nameList, 1);
+
+        correctName = nameList[n];
+        options.push(correctName);
+
+        function riempiOptions() {
+            for(let i = 0; i < 3; i++) {
+                let n = nameList[Math.trunc(Math.random() * 195)];
+                options.push(n);
+            }
+        }
+
+        riempiOptions();
+
+        function shuffle(array) {
+            let currentIndex = array.length;
+
+            while (currentIndex != 0) {
+                let randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+                }
+            }
+
+        shuffle(options);
     }
 </script>
 
@@ -45,17 +81,17 @@
     <div class="flag">
         <Flag src={flagList[n]}></Flag>
     </div>
-    <button class="option top left">
+    <button on:click={() => isCorrect(options[0])} class="option top left">
         <Flagname name={options[0]}></Flagname>
     </button>
-    <button class="option top right">
-        <Flagname name="test"></Flagname>
+    <button on:click={() => isCorrect(options[1])} class="option top right">
+        <Flagname name={options[1]}></Flagname>
     </button>
-    <button class="option left">
-        <Flagname name="test"></Flagname>
+    <button on:click={() => isCorrect(options[2])} class="option left">
+        <Flagname name={options[2]}></Flagname>
     </button>
-    <button class="option right">
-        <Flagname name="test"></Flagname>
+    <button on:click={() => isCorrect(options[3])} class="option right">
+        <Flagname name={options[3]}></Flagname>
     </button>
 </div>
 
@@ -105,4 +141,4 @@
     .right {
         margin-right: 40%;
     }
-</style>
+</style>    
