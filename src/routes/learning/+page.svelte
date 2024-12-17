@@ -1,9 +1,16 @@
 <script>
+    import { onMount } from "svelte";
     import Arrow from "../../components/arrow.svelte";
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import Taskbar from "../../components/taskbar.svelte";
-    import { data } from "../../stores/data";
+
+    let data;
+
+    onMount(() => {
+        data = JSON.parse(localStorage.getItem('flags'));
+        console.log(data);
+    })
     
     let flagUrl, name;
     let dbLen = 195;
@@ -23,8 +30,8 @@
     };
 
     $: {
-        flagUrl = $data[ind].URL_ID;
-        name = $data[ind].nation;
+        flagUrl = data[ind].URL_ID;
+        name = data[ind].nation;
     }
 </script>
 
