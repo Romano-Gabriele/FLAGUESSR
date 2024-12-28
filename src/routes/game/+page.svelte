@@ -2,8 +2,10 @@
     import { onMount } from "svelte";
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
+    import Popup from "../../components/popup.svelte";
 
     let data = [];
+    let end = 0;
 
     onMount(() => {
         const storedData = sessionStorage.getItem('flags');
@@ -26,7 +28,9 @@
             score++;
             game();
         } else {
-            alert("game ends");
+            end = 1;
+            console.log("Game over! Score:", score);
+            console.log(end);
         }
     }
 
@@ -80,6 +84,12 @@
         <Flagname name={options[3]}></Flagname>
     </button>
 </div>
+
+{#if end == 1}
+    <div class="popup">
+        <Popup {score}></Popup>
+    </div>
+{/if}
 
 <style>
     .score-container {
@@ -153,5 +163,17 @@
 
     .right {
         margin-right: 40%;
+    }
+
+    .popup {
+        width: 70%;
+        height: 50%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 </style>
