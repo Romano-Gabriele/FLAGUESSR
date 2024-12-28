@@ -59,6 +59,10 @@
     }
 </script>
 
+<div class="score-container">
+    <div class="score">Score: {score}</div>
+</div>
+
 <div class="container">
     <div class="flag">
         <Flag src={flagList[n]}></Flag>
@@ -78,8 +82,22 @@
 </div>
 
 <style>
-    * {
-        border: 2px solid yellow;
+    .score-container {
+        position: fixed;
+        top: 10%;
+        right: 7.5%;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 0.5%;
+        background: linear-gradient(135deg, #1a1a1a, #330000);
+        border-radius: 0.75em;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .score {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: white;
     }
 
     .container {
@@ -98,6 +116,7 @@
         height: 100%;
         align-self: flex-end;
         grid-column: 1 / 3;
+        filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.7));
     }
 
     .option {
@@ -107,7 +126,19 @@
         justify-content: center;
         align-items: center;
         border-radius: 30px;
-        background: linear-gradient(135deg, #2c2c2c, #4f4f4f);
+        background: linear-gradient(135deg, #330000, #1a1a1a);
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .option:hover {
+        transform: scale(1.05);
+        box-shadow: 
+            0.6em 1.2em 2em rgba(221, 19, 23, 0.8),
+            -0.6em 0.6em 2em rgba(255, 0, 0, 0.6),
+            0.6em -0.6em 2em rgba(255, 50, 50, 0.5);
     }
 
     .top {
@@ -123,4 +154,4 @@
     .right {
         margin-right: 40%;
     }
-</style>    
+</style>
