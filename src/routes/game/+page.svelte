@@ -3,32 +3,34 @@
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
 
-    let data;
+    let data = [];
 
     onMount(() => {
-        data = JSON.parse(localStorage.getItem('flags'));
-    })
+        const storedData = sessionStorage.getItem('flags');
+        if (storedData) {
+            data = JSON.parse(storedData);
+            game();
+        }
+    });
 
-    let flagList;
-    let nameList;
-    let options;
+    let flagList = [];
+    let nameList = [];
+    let options = [];
     let correctName;
     let score = 0;
     let n;
 
-    game();
-
     function isCorrect(option) {
         let correct = option == correctName ? 1 : 0;
-        if(correct) {
+        if (correct) {
             score++;
-            game(score);
-        }
-        else
+            game();
+        } else {
             alert("game ends");
+        }
     }
 
-    function game(score) {
+    function game() {
         n = Math.trunc(Math.random() * 195);
         flagList = [];
         nameList = [];
@@ -38,12 +40,12 @@
 
         function riempi(lista, chiave) {
             let fill;
-            for(let i = 0; i < data.length; i++) {
-                if(chiave == 0)
+            for (let i = 0; i < data.length; i++) {
+                if (chiave == 0) {
                     fill = data[i].URL_ID;
-                else
+                } else {
                     fill = data[i].nation;
-
+                }
                 lista[i] = fill;
             }
             return lista;
@@ -51,30 +53,9 @@
 
         flagList = riempi(flagList, 0);
         nameList = riempi(nameList, 1);
-
         correctName = nameList[n];
-        options.push(correctName);
-
-        function riempiOptions() {
-            for(let i = 0; i < 3; i++) {
-                let n = nameList[Math.trunc(Math.random() * 195)];
-                options.push(n);
-            }
-        }
-
-        riempiOptions();
-
-        function shuffle(array) {
-            let currentIndex = array.length;
-
-            while (currentIndex != 0) {
-                let randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex--;
-                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-                }
-            }
-
-        shuffle(options);
+        options = [correctName, ...nameList.filter((name, index) => index !== n).sort(() => 0.5 - Math.random()).slice(0, 3)];
+        options = options.sort(() => 0.5 - Math.random());
     }
 </script>
 

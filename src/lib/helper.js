@@ -17,7 +17,7 @@ export async function getFlagData() {
             }
         }
 
-        localStorage.setItem('flags', JSON.stringify(flags));
+        sessionStorage.setItem('flags', JSON.stringify(flags));
     } catch (error) {
         console.error("Errore nel recupero dei dati:", error);
     }
