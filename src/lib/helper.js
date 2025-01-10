@@ -1,10 +1,11 @@
 import { getDatabase, ref, child, get } from "firebase/database";
+import { db } from "../lib/firebase";
 
 let dbLen = 195;
 
 export async function getFlagData() {
     let flags = [];
-    const dbRef = ref(getDatabase());
+    const dbRef = ref(db);
     try {
         for(let i = 0; i < dbLen; i++) {
             const snapshot = await get(child(dbRef, `${i}/`));
@@ -17,7 +18,9 @@ export async function getFlagData() {
             }
         }
 
+    if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
         sessionStorage.setItem('flags', JSON.stringify(flags));
+    }
     } catch (error) {
         console.error("Errore nel recupero dei dati:", error);
     }

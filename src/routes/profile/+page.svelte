@@ -1,5 +1,6 @@
 <script>
     import Taskbar from "../../components/taskbar.svelte";
+    
     let current = 0;
     let username = "Username";
     let gamesPlayed = 42;
