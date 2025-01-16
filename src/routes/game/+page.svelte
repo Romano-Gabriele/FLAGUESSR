@@ -166,13 +166,8 @@
     }
 
     .popup {
-        width: 70%;
-        height: 50%;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
+        width: 100%;
+        height: 100%;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
