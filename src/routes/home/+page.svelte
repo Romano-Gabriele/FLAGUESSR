@@ -2,7 +2,6 @@
     import Taskbar from "../../components/taskbar.svelte";
     import { visible } from '../../stores/style';
     import { onMount } from "svelte";
-    import { user } from "../../stores/auth";
 
     onMount(() => {
         setTimeout(() => {

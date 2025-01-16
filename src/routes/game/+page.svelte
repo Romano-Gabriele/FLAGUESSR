@@ -3,12 +3,15 @@
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import Popup from "../../components/popup.svelte";
+    import { user } from "../../stores/auth";
+    import { updateUser } from "../../lib/helper";
+    import { updateData } from "../../lib/dbFuncs";
 
     let data = [];
     let end = 0;
 
     onMount(() => {
-        const storedData = sessionStorage.getItem('flags');
+        const storedData = sessionStorage.getItem("flags");
         if (storedData) {
             data = JSON.parse(storedData);
             game();
@@ -22,12 +25,20 @@
     let score = 0;
     let n;
 
-    function isCorrect(option) {
+    async function isCorrect(option) {
         let correct = option == correctName ? 1 : 0;
         if (correct) {
             score++;
             game();
         } else {
+            await updateUser($user.uid);
+            console.log("userupdated = ", $user);
+            let played = $user.played;
+            updateData($user.uid, "played", played + 1);
+            updateData($user.uid, "last", score);
+            if (score > $user.best) {
+                updateData($user.uid, "best", score);
+            }
             end = 1;
             console.log("Game over! Score:", score);
             console.log(end);
@@ -58,7 +69,13 @@
         flagList = riempi(flagList, 0);
         nameList = riempi(nameList, 1);
         correctName = nameList[n];
-        options = [correctName, ...nameList.filter((name, index) => index !== n).sort(() => 0.5 - Math.random()).slice(0, 3)];
+        options = [
+            correctName,
+            ...nameList
+                .filter((name, index) => index !== n)
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 3),
+        ];
         options = options.sort(() => 0.5 - Math.random());
     }
 </script>
@@ -140,12 +157,14 @@
         color: white;
         font-weight: bold;
         text-transform: uppercase;
-        transition: transform 0.3s, box-shadow 0.3s;
+        transition:
+            transform 0.3s,
+            box-shadow 0.3s;
     }
 
     .option:hover {
         transform: scale(1.05);
-        box-shadow: 
+        box-shadow:
             0.6em 1.2em 2em rgba(221, 19, 23, 0.8),
             -0.6em 0.6em 2em rgba(255, 0, 0, 0.6),
             0.6em -0.6em 2em rgba(255, 50, 50, 0.5);
@@ -169,6 +188,15 @@
         width: 100%;
         height: 100%;
         padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        position: fixed; /* Posizione fissa per rimanere visibile sopra il contenuto */
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.25); /* Semi-trasparente per il background */
+        backdrop-filter: blur(10px); /* Aggiungi la sfocatura dello sfondo */
+        border-radius: 12px; /* Angoli arrotondati */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Ombra per dare profondità */
     }
 </style>

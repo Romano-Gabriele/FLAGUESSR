@@ -4,7 +4,8 @@
   import { sign_up } from "../stores/auth";
   import { goto } from "$app/navigation";
   import { user } from "../stores/auth";
-  import { getUserData } from "../lib/dbFuncs";
+  import { updateUser } from "../lib/helper";
+  import { getUserData, updateData } from "../lib/dbFuncs";
 
   let email = "";
   let password = "";
@@ -18,9 +19,7 @@
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      const userData = await getUserData($user.uid);
-      user.update(current => ({ ...current, ...userData }));
-      console.log($user);
+      await updateUser($user.uid);
       goto("/home");
     } catch (err) {
       error = err.message;
@@ -30,10 +29,15 @@
   const signInWith = async (provider) => {
     try {
       await signInWithPopup(auth, provider);
-      const userData = await getUserData($user.uid);
-      console.log(userData);
-      user.update(current => ({ ...current, ...userData }));
-      console.log($user);
+      let exists = await getUserData($user.uid);
+      if(!exists.length) {
+        updateData($user.uid, "email", $user.email);
+        updateData($user.uid, "played", 0);
+        updateData($user.uid, "last", 0);
+        updateData($user.uid, "best", 0);
+      }
+      await updateUser($user.uid);
+      console.log("aggiornamento = ", $user);
       goto("/home");
     } catch (e) {
       error = e.message;

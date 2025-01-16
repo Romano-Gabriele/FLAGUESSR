@@ -1,5 +1,7 @@
 import { getDatabase, ref, child, get } from "firebase/database";
 import { db } from "../lib/firebase";
+import { getUserData } from "./dbFuncs";
+import { user } from "../stores/auth";
 
 export async function getFlagData() {
     let dbLen = 195;
@@ -24,3 +26,8 @@ export async function getFlagData() {
         console.error("Errore nel recupero dei dati:", error);
     }
 };
+
+export async function updateUser(uid) {
+    let userData = await getUserData(uid);
+    user.update((current) => ({ ...current, ...userData }));
+}

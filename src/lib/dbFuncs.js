@@ -3,25 +3,7 @@ import { db } from '../lib/firebase';
 
 //'users/53BdModGCwex0cSwcs8dJM997AQ2/role': 'ADMIN', // role structure example
 
-function whichField(field, data) {
-    if(email) {
-
-    }
-
-    if(played) {
-
-    }
-
-    if(best) {
-
-    }
-
-    if(last) {
-
-    }
-}
-
-export let updateData = async (uid, field, data) => {
+export let updateData = async (uid, field, value) => {
   if (!uid || !field) {
     console.error('UID o campo non forniti.');
     return;
@@ -29,7 +11,7 @@ export let updateData = async (uid, field, data) => {
 
   let updates = 
     {
-        [`users/${uid}/${field}`]: whichField(field, data)
+        [`users/${uid}/${field}`]: value
     };
 
   await update(ref(db), updates)
