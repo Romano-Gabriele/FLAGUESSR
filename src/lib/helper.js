@@ -1,9 +1,8 @@
 import { getDatabase, ref, child, get } from "firebase/database";
 import { db } from "../lib/firebase";
 
-let dbLen = 195;
-
 export async function getFlagData() {
+    let dbLen = 195;
     let flags = [];
     const dbRef = ref(db);
     try {
@@ -25,17 +24,3 @@ export async function getFlagData() {
         console.error("Errore nel recupero dei dati:", error);
     }
 };
-
-/*export async function storeData() {
-    data = await getFlagData();
-  }*/
-
-/*// Funzione per registrare un nuovo utente
-    async function registerUser(email, password) {
-        try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            console.log('Utente registrato:', userCredential.user);
-        } catch (error) {
-            console.error(error.message);
-        }
-    };*/

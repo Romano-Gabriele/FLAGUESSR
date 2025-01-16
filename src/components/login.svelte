@@ -1,21 +1,26 @@
 <script>
   import { auth, googleProvider } from "../lib/firebase";
   import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-  import { signUp } from "../stores/data";
+  import { sign_up } from "../stores/auth";
   import { goto } from "$app/navigation";
+  import { user } from "../stores/auth";
+  import { getUserData } from "../lib/dbFuncs";
 
   let email = "";
   let password = "";
   let error = "";
 
   function toggleSignUp() {
-    $signUp = true;
+    $sign_up = true;
   }
 
   const login = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      const userData = await getUserData($user.uid);
+      user.update(current => ({ ...current, ...userData }));
+      console.log($user);
       goto("/home");
     } catch (err) {
       error = err.message;
@@ -25,6 +30,10 @@
   const signInWith = async (provider) => {
     try {
       await signInWithPopup(auth, provider);
+      const userData = await getUserData($user.uid);
+      console.log(userData);
+      user.update(current => ({ ...current, ...userData }));
+      console.log($user);
       goto("/home");
     } catch (e) {
       error = e.message;
@@ -33,7 +42,10 @@
 </script>
 
 <main>
-  <form class="form" on:submit={login}>
+  <form
+    class="form"
+    on:submit={login}
+  >
     <div class="flex-column">
       <label for="email">Email</label>
     </div>
@@ -63,7 +75,7 @@
         <input type="checkbox" />
         <label for="checkbox">Remember me</label>
       </div>
-      <span class="span">Forgot password?</span>
+     home/ <span class="span">Forgot password?</span>
     </div>
    -->
     <button type="submit" class="button-submit">Sign In</button>
@@ -77,7 +89,7 @@
       <button
         type="button"
         class="btn google"
-        on:click={() => signInWith(googleProvider)}
+        on:click={async () => await signInWith(googleProvider)}
       >
         <svg
           version="1.1"
@@ -132,7 +144,7 @@
     align-items: center;
     height: 90vh;
   }
-  
+
   .form {
     display: flex;
     flex-direction: column;

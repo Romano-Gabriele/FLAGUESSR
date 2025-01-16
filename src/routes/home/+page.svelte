@@ -2,11 +2,12 @@
     import Taskbar from "../../components/taskbar.svelte";
     import { visible } from '../../stores/style';
     import { onMount } from "svelte";
+    import { user } from "../../stores/auth";
 
     onMount(() => {
         setTimeout(() => {
             $visible = true;
-        }, 250)
+        }, 250);
     });
 
     let current = 1;

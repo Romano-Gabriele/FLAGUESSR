@@ -1,10 +1,10 @@
 <script>
-    import { signUp } from "../../stores/data";
+    import { sign_up } from "../../stores/auth";
     import Signup from "../../components/signup.svelte";
     import Login from "../../components/login.svelte";
 </script>
 
-{#if $signUp}
+{#if $sign_up}
     <Signup />
 {:else}
     <Login />

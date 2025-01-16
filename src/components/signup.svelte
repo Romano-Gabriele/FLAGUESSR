@@ -1,7 +1,7 @@
 <script>
   import { auth } from "../lib/firebase";
   import { createUserWithEmailAndPassword } from "firebase/auth";
-  import { signUp } from "../stores/data";
+  import { sign_up } from "../stores/auth";
   import { goto } from "$app/navigation";
 
   let email = "";
@@ -27,7 +27,7 @@
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      $signUp = false;
+      $sign_up = false;
       goto("./home");
     } catch (e) {
       error = e.message;
@@ -35,7 +35,7 @@
   };
 
   function toggleSignUp() {
-    $signUp = false;
+    $sign_up = false;
   }
 
   const togglePasswordVisibility = () => {
