@@ -166,14 +166,18 @@
     }
 
     .popup {
-        width: 70%;
-        height: 50%;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: fixed; /* Posizione fissa per rimanere visibile sopra il contenuto */
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.25); /* Semi-trasparente per il background */
+    backdrop-filter: blur(10px); /* Aggiungi la sfocatura dello sfondo */
+    border-radius: 12px; /* Angoli arrotondati */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Ombra per dare profondità */
+}
 </style>
