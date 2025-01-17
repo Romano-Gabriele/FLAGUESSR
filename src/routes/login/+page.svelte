@@ -16,6 +16,6 @@
     .bg {
         width: 100%;
         height: 100%;
-        background: radial-gradient(circle, #330000, #1a1a1a);        
+        background: linear-gradient(135deg, #1a1a1a, #330000);     
     }
 </style>
