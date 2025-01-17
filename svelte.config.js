@@ -4,12 +4,17 @@ import adapter from '@sveltejs/adapter-static';
 const config = {
 	kit: {
 		adapter: adapter({
-            pages: 'docs',
-            assets: 'docs',
-            fallback: undefined,
-            precompress: false,
-            strict: true
-        })
+			pages: 'docs',
+			assets: 'docs',
+			fallback: null,
+			   precompress: false,
+			   strict: true,
+			   trailingSlash: 'always'
+		   }),
+		   paths: {
+			   base: process.env.NODE_ENV === "production" ? "/Biblioteca" : ""
+  
+		   }
 	}
 };
 
