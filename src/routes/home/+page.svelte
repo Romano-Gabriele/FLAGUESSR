@@ -1,6 +1,7 @@
 <script>
     import Taskbar from "../../components/taskbar.svelte";
     import { visible } from '../../stores/style';
+    import { base } from "$app/paths";
     import { onMount } from "svelte";
 
     onMount(() => {
@@ -13,7 +14,7 @@
 </script>
 
 <div class="container">
-    <a href="/game" class="button {$visible ? 'visible' : ''}" data-text="Awesome">
+    <a href="{base}/game" class="button {$visible ? 'visible' : ''}" data-text="Awesome">
         <span class="actual-text">&nbsp;Play&nbsp;&nbsp;Flaguessr&nbsp;</span>
         <span aria-hidden="true" class="hover-text">&nbsp;Play&nbsp;&nbsp;Flaguessr&nbsp;</span>
     </a>

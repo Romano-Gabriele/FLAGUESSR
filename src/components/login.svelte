@@ -7,6 +7,7 @@
   import { updateUser } from "../lib/helper";
   import { getUserData, updateData } from "../lib/dbFuncs";
   import { onMount } from "svelte";
+  import { base } from "$app/paths";
 
   let email = "";
   let password = "";
@@ -27,7 +28,7 @@
     try {
       await signInWithEmailAndPassword(auth, email, password);
       await updateUser($user.uid);
-      goto("/home");
+      goto(`${base}/home`);
     } catch (err) {
       error = err.message;
     }
@@ -44,7 +45,7 @@
         await updateData($user.uid, "best", 0);
       }
       await updateUser($user.uid);
-      goto("/home");
+      goto(`${base}/home`);
     } catch (e) {
       error = e.message;
     }

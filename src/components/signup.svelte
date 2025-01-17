@@ -5,6 +5,7 @@
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
   import { Eye, EyeOff } from "lucide-svelte";
+  import { base } from "$app/paths";
 
   let email = "";
   let password = "";
@@ -36,7 +37,7 @@
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       $sign_up = false;
-      goto("./home");
+      goto(`${base}/home`);
     } catch (e) {
       error = e.message;
     }

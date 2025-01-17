@@ -1,12 +1,13 @@
 <script>
-    import { visible } from '../stores/style';   
+    import { visible } from '../stores/style';
+    import { base } from "$app/paths";
     export let selection;
 </script>
 
 <div class="taskbar {$visible ? 'slide-up' : ''}">
-    <a href="../profile" class="taskbar-item {selection === 0 ? 'active' : ''}">Profilo</a>
-    <a href="../home" class="taskbar-item {selection === 1 ? 'active' : ''}">Home</a>
-    <a href="../learning" class="taskbar-item {selection === 2 ? 'active' : ''}">Learning</a>
+    <a href="{base}/profile" class="taskbar-item {selection === 0 ? 'active' : ''}">Profilo</a>
+    <a href="{base}/home" class="taskbar-item {selection === 1 ? 'active' : ''}">Home</a>
+    <a href="{base}/learning" class="taskbar-item {selection === 2 ? 'active' : ''}">Learning</a>
 </div>
 
 <style>

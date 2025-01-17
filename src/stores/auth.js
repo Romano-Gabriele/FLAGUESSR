@@ -2,6 +2,7 @@ import { writable } from "svelte/store";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import { goto } from "$app/navigation";
+import { base } from "$app/paths";
 
 export let user = writable(null);
 export let sign_up = writable(false);
@@ -11,7 +12,7 @@ export const logOut = async () => {
   try {
     await signOut(auth);
     user.set(null); // Fix: Use the set method to update the writable store
-    goto('/')
+    goto(`${base}/home`);
   } catch (error) {
     console.error("Error during logout:", error);
   }

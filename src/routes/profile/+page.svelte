@@ -2,6 +2,7 @@
     import Taskbar from "../../components/taskbar.svelte";
     import { user } from "../../stores/auth";
     import { getUserData } from "../../lib/dbFuncs";
+    import { base } from "$app/paths";
     import { onMount } from "svelte";
     
     let current = 0;
@@ -38,7 +39,7 @@
             </div>
         </div>
         <div class="profile-footer">
-            <a href="/login" class="btn">cambia account</a>
+            <a href="{base}/login" class="btn">cambia account</a>
         </div>
     </div>
 

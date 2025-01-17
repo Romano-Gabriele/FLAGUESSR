@@ -1,5 +1,6 @@
 <script>
     import { goto } from "$app/navigation";
+    import { base } from "$app/paths";
     export let score;
 </script>
 
@@ -11,7 +12,7 @@
             on:click={() => {
                 score = 0;
                 // Navigazione alla home
-                goto("/home");
+                goto(`${base}/home`);
             }}>Home</button>
         <button
             on:click={() => {

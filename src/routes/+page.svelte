@@ -2,10 +2,11 @@
   import { getFlagData } from "../lib/helper";
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
+  import { base } from "$app/paths";
 
   onMount(async () => {
     await getFlagData();
-    goto("/login");
+    goto(`${base}/login`);
   });
 </script>
 
