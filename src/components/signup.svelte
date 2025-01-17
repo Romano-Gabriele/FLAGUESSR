@@ -4,6 +4,7 @@
   import { sign_up, visible } from "../stores/auth";
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
+  import { Eye, EyeOff } from "lucide-svelte";
 
   let email = "";
   let password = "";
@@ -52,84 +53,97 @@
 
 <main>
   <form class="form {$visible ? 'visible' : ''}" on:submit={register}>
-    <div class="flex-column">
-      <label for="email">Email</label>
-    </div>
-    <div class="inputForm">
-      <input
-        type="email"
-        class="input"
-        placeholder="Enter your Email"
-        bind:value={email}
-      />
+    <h1 class="form-title">Sign Up</h1>
+    <p class="form-subtitle">Create your account to get started</p>
+
+    <div class="input-group">
+      <div class="flex-column">
+        <label for="email">Email</label>
+      </div>
+      <div class="inputForm">
+        <input
+          type="email"
+          class="input"
+          placeholder="Enter your Email"
+          bind:value={email}
+        />
+      </div>
     </div>
 
-    <div class="flex-column">
-      <label for="password">Password</label>
-    </div>
-    <div class="inputForm">
-      <input
-        class="input password-hidden"
-        type="password"
-        placeholder="Enter your Password"
-        bind:value={password}
-        style="display: {passwordVisible ? 'none' : 'block'}"
-      />
-      <input
-        class="input password-visible"
-        type="text"
-        placeholder="Enter your Password"
-        bind:value={password}
-        style="display: {passwordVisible ? 'block' : 'none'}"
-      />
-      <button
-        type="button"
-        class="toggle-password"
-        on:click={togglePasswordVisibility}
-        tabindex="-1"
-        aria-label="Toggle password visibility"
-      >
-        {passwordVisible ? "🔓" : "🔒"}
-      </button>
-    </div>
-
-    <div class="flex-column">
-      <label for="confirmPassword">Conferma Password</label>
-    </div>
-    <div class="inputForm">
-      <input
-        class="input password-hidden"
-        type="password"
-        placeholder="Re-enter your Password"
-        bind:value={confirmPassword}
-        style="display: {passwordVisible ? 'none' : 'block'}"
-      />
-      <input
-        class="input password-visible"
-        type="text"
-        placeholder="Re-enter your Password"
-        bind:value={confirmPassword}
-        style="display: {passwordVisible ? 'block' : 'none'}"
-      />
+    <div class="input-group">
+      <div class="flex-column">
+        <label for="password">Password</label>
+      </div>
+      <div class="inputForm">
+        <input
+          class="input password-hidden"
+          type="password"
+          placeholder="Enter your Password"
+          bind:value={password}
+          style="display: {passwordVisible ? 'none' : 'block'}"
+        />
+        <input
+          class="input password-visible"
+          type="text"
+          placeholder="Enter your Password"
+          bind:value={password}
+          style="display: {passwordVisible ? 'block' : 'none'}"
+        />
+        <button
+          type="button"
+          class="toggle-password"
+          on:click={togglePasswordVisibility}
+          tabindex="-1"
+          aria-label="Toggle password visibility"
+        >
+          {#if passwordVisible}
+            <Eye />
+          {:else}
+            <EyeOff />
+          {/if}
+        </button>
+      </div>
     </div>
 
-    <button type="submit" class="btn">
-      <span class="text">Sign in</span>
-    </button>
-    
-    <p class="p">
-      Do you have an account?
-      <button class="span" on:click={toggleSignUp}>Sign In</button>
-    </p>
-    
+    <div class="input-group">
+      <div class="flex-column">
+        <label for="confirmPassword">Confirm Password</label>
+      </div>
+      <div class="inputForm">
+        <input
+          class="input password-hidden"
+          type="password"
+          placeholder="Re-enter your Password"
+          bind:value={confirmPassword}
+          style="display: {passwordVisible ? 'none' : 'block'}"
+        />
+        <input
+          class="input password-visible"
+          type="text"
+          placeholder="Re-enter your Password"
+          bind:value={confirmPassword}
+          style="display: {passwordVisible ? 'block' : 'none'}"
+        />
+      </div>
+    </div>
+
     {#if error}
       <p class="error">{error}</p>
     {/if}
+
+    <button type="submit" class="btn">
+      <span class="text">Sign Up</span>
+    </button>
+
+    <p class="p">
+      Already have an account?
+      <button class="span" on:click={toggleSignUp}>Sign In</button>
+    </p>
   </form>
 </main>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap");
 
   main {
     display: flex;
@@ -149,7 +163,9 @@
     border-radius: 20px;
     font-family: "Roboto Slab", serif;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    transition:
+      opacity 0.8s ease-in-out,
+      transform 0.8s ease-in-out;
     opacity: 0;
     transform: translateY(30px);
   }
@@ -197,7 +213,7 @@
   }
 
   .inputForm:focus-within {
-    border-color: #DB1317;
+    border-color: #db1317;
     box-shadow: 0 0 10px rgba(219, 19, 23, 0.3);
   }
 
@@ -219,7 +235,7 @@
     padding: 0;
     position: absolute;
     right: 15px;
-    top: 50%;
+    top: 55%;
     transform: translateY(-50%);
     transition: opacity 0.3s ease;
     z-index: 2;
@@ -228,7 +244,7 @@
   .toggle-password:hover {
     opacity: 0.8;
   }
-  
+
   .btn {
     width: 100%;
     height: 50px;
@@ -242,12 +258,13 @@
     background: rgba(255, 255, 255, 0.05);
     color: white;
     cursor: pointer;
+    margin-top: 5%;
     transition: 0.3s ease-in-out;
   }
 
   .btn:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: #DB1317;
+    border-color: #db1317;
     transform: scale(1.02);
   }
 
@@ -264,7 +281,7 @@
   }
 
   .span {
-    color: #DB1317;
+    color: #db1317;
     border: 0;
     background-color: transparent;
     font-weight: 600;
@@ -277,10 +294,28 @@
   }
 
   .error {
-    color: #DB1317;
+    color: #db1317;
     text-align: center;
     margin-top: 10px;
     font-size: 0.9em;
     text-shadow: 0 0 10px rgba(219, 19, 23, 0.3);
+  }
+
+  .form-title {
+    font-size: 1.8em;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .form-subtitle {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
   }
 </style>
