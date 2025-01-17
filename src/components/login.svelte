@@ -30,7 +30,6 @@
     try {
       await signInWithPopup(auth, provider);
       let exists = await getUserData($user.uid);
-      console.log("esiste = ", exists);
       if(exists.length > 0) {
         updateData($user.uid, "email", $user.email);
         updateData($user.uid, "played", 0);

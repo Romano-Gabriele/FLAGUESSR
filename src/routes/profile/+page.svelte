@@ -1,12 +1,18 @@
 <script>
     import Taskbar from "../../components/taskbar.svelte";
+    import { user } from "../../stores/auth";
+    import { getUserData } from "../../lib/dbFuncs";
+    import { onMount } from "svelte";
     
     let current = 0;
-    let username = "Username";
-    let gamesPlayed = 42;
-    let wins = 27;
-    let totalScore = 1570;
-    let src = "https://via.placeholder.com/150"
+    let username = $user.displayName;
+    let src = $user.photoURL;
+    let stats = [];
+
+    onMount(async () => {
+        stats = await getUserData($user.uid);
+        console.log(stats);
+    });
 </script>
 
 <div class="container">
@@ -19,20 +25,20 @@
         </div>
         <div class="profile-stats">
             <div class="stat">
-                <h2>Partite Giocate</h2>
-                <p>{gamesPlayed}</p>
+                <h2>Games Played</h2>
+                <p>{stats.played}</p>
             </div>
             <div class="stat">
-                <h2>Vittorie</h2>
-                <p>{wins}</p>
+                <h2>Best</h2>
+                <p>{stats.best}</p>
             </div>
             <div class="stat">
-                <h2>Punteggio Totale</h2>
-                <p>{totalScore}</p>
+                <h2>Last</h2>
+                <p>{stats.last}</p>
             </div>
         </div>
         <div class="profile-footer">
-            <a href="/homepage" class="btn">cambia account</a>
+            <a href="/login" class="btn">cambia account</a>
         </div>
     </div>
 
