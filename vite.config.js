@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [svelte()],
+  base: '/FLAGUESSR/',  // Usa il nome del repository GitHub
   build: {
-    outDir: 'dist', // Questa è la cartella dove verranno salvati i file di output
+    outDir: 'dist',
   },
-  base: '/FLAGUESSR/', // Imposta la base dell'URL, utile per GitHub Pages o altre configurazioni
 });
