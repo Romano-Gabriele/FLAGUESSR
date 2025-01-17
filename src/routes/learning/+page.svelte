@@ -8,31 +8,36 @@
     let data;
 
     onMount(() => {
-        data = JSON.parse(localStorage.getItem('flags'));
+        data = JSON.parse(sessionStorage.getItem('flags'));
         console.log(data);
+        changeFlag();
     })
     
-    let flagUrl, name;
+    let flagUrl = "";
+    let name = "";
     let dbLen = 195;
     let ind = 0;
     let current = 2;
+
+    function changeFlag() {
+        flagUrl = data[ind].URL_ID;
+        name = data[ind].nation;
+        console.log(ind);
+    }
 
     function incrementa() {
         ind++;
         if(ind >= dbLen)
             ind = 0;
+        changeFlag();
     };
 
     function decrementa() {
         ind--;
         if(ind < 0)
             ind = dbLen - 1;
+        changeFlag();
     };
-
-    $: {
-        flagUrl = data[ind].URL_ID;
-        name = data[ind].nation;
-    }
 </script>
 
 <div class="container">
