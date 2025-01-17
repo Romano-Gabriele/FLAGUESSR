@@ -5,16 +5,19 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && touch docs/.nojekill",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"deploy": "gh-pages -d dist"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.5.0",
+		"gh-pages": "^6.3.0",
 		"svelte": "^3.54.0",
 		"vite": "^4.3.0"
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/vite-plugin-svelte": "^2.5.3",
 		"firebase": "^11.0.2",
 		"lucide-svelte": "^0.473.0"
 	}
