@@ -12,7 +12,7 @@ const config = {
 			   trailingSlash: 'always'
 		   }),
 		   paths: {
-			   base: process.env.NODE_ENV === "production" ? "/Biblioteca" : ""
+			   base: process.env.NODE_ENV === "production" ? "/FLAGUESSR" : ""
   
 		   }
 	}
