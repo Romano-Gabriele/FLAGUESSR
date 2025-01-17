@@ -38,10 +38,10 @@
       await signInWithPopup(auth, provider);
       let exists = await getUserData($user.uid);
       if(exists.length > 0) {
-        updateData($user.uid, "email", $user.email);
-        updateData($user.uid, "played", 0);
-        updateData($user.uid, "last", 0);
-        updateData($user.uid, "best", 0);
+        await updateData($user.uid, "email", $user.email);
+        await updateData($user.uid, "played", 0);
+        await updateData($user.uid, "last", 0);
+        await updateData($user.uid, "best", 0);
       }
       await updateUser($user.uid);
       goto("/home");
