@@ -1,11 +1,7 @@
-import { defineConfig } from 'vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [svelte()],
-  base: '/flaguessr/',  // Usa il nome del repository GitHub
-  build: {
-    outDir: 'dist',
+export default {
+  kit: {
+    paths: {
+      base: '/FLAGUESSR/',  // Usa il nome del tuo repository su GitHub
+    },
   },
-});
+};
