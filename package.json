@@ -4,9 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && touch docs/.nojekill",
-		"preview": "vite preview",
-		"deploy": "gh-pages -d dist"
+		"build": "vite build && touch docs/.nojekyll",
+		"preview": "vite preview"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",

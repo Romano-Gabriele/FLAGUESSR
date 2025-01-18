@@ -1,14 +1,10 @@
-import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [svelte()],
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
+    outDir: 'docs',  // La cartella di destinazione per la build (GitHub Pages)
     rollupOptions: {
-      input: 'src/app.html',  // Assicurati che questo sia il percorso corretto
+      input: 'src/app.html', // Usare `src/app.html` come punto di ingresso principale
     },
   },
-  base: '/FLAGUESSR/', // Impostazione base per GitHub Pages
 });
