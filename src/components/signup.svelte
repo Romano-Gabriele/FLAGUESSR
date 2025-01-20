@@ -4,7 +4,7 @@
   import { sign_up, visible } from "../stores/auth";
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
-  // import { Eye, EyeOff } from "lucide-svelte";
+  import { Eye, EyeOff } from "lucide-svelte";
   import { base } from "$app/paths";
 
   let email = "";
@@ -98,9 +98,9 @@
           aria-label="Toggle password visibility"
         >
           {#if passwordVisible}
-            <!-- <Eye /> -->
+            <Eye />
           {:else}
-            <!-- <EyeOff /> -->
+            <EyeOff />
           {/if}
         </button>
       </div>
