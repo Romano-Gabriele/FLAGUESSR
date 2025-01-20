@@ -6,12 +6,12 @@ const config = {
     adapter: adapter({
       pages: 'docs',  // La cartella dove verranno salvate le pagine
       assets: 'docs', // La cartella per gli asset
-      fallback: undefined,
+      fallback: null,
       precompress: false,
       strict: true,
     }),
     paths: {
-      base: '/FLAGUESSR/',  // Lasciamo la base vuota se il sito è direttamente nella root
+      base: process.argv.includes('dev') ? '' : '/FLAGUESSR',  // Lasciamo la base vuota se il sito è direttamente nella root
     },
   },
 };
