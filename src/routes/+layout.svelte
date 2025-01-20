@@ -2,7 +2,7 @@
     import { visible } from "../stores/style";
     import { user } from "../stores/auth";
 
-    let loaded = false;
+    let loaded = true;
 
     $: {
       if ($user != undefined){
