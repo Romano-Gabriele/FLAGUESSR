@@ -3,16 +3,16 @@ import adapter from '@sveltejs/adapter-static';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    paths: {
-      base: '/FLAGUESSR/',  // Sostituisci 'nome-repo' con il nome del tuo repository
-    },
     adapter: adapter({
-      pages: 'docs',        // Cartella di destinazione per le pagine
-      assets: 'docs',       // Cartella di destinazione per gli asset
-      fallback: 'index.html',  // Nessun fallback per il routing
-      precompress: false,   // Precompressione dei file non necessaria
-      strict: true,         // Modalità rigorosa
+      pages: 'docs',  // La cartella dove verranno salvate le pagine
+      assets: 'docs', // La cartella per gli asset
+      fallback: undefined,
+      precompress: false,
+      strict: true,
     }),
+    paths: {
+      base: '/FLAGUESSR/',  // Lasciamo la base vuota se il sito è direttamente nella root
+    },
   },
 };
 
