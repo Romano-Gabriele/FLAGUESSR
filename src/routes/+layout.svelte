@@ -2,11 +2,12 @@
     import { visible } from "../stores/style";
     import { user } from "../stores/auth";
     import { page } from "$app/stores"
+    import { base } from "$app/paths"
 
     let loaded = false;
 
    $: {
-    if (!$user && $page?.route?.id === '/' || $page?.route?.id === '/login'){
+    if (!$user && $page?.route?.id === '/' || $page?.route?.id === '/login' || $page?.route?.id === `${base}/login`){
         loaded = true;
         console.log("CASE 1:", $user);
     } else if(!$user) {
@@ -23,7 +24,7 @@
     <img src="logos/flaguessr_logo.png" alt="flaguessr_Logo">
 </header>
 
-{#if loaded == true}
+{#if loaded}
     <main>
         <slot />
     </main>

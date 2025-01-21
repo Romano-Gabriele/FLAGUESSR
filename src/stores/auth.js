@@ -4,7 +4,7 @@ import { auth } from "../lib/firebase";
 import { goto } from "$app/navigation";
 import { base } from "$app/paths";
 
-export let user = writable([]);
+export let user = writable(null);
 export let sign_up = writable(false);
 export let visible = writable(false);
 
