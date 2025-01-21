@@ -9,7 +9,7 @@ export async function getFlagData() {
     const dbRef = ref(db);
     try {
         for(let i = 0; i < dbLen; i++) {
-            const snapshot = await get(child(dbRef, `${i}/`));
+            const snapshot = await get(child(dbRef, `flags/${i}/`));
             if(snapshot.exists()) {
               console.log(1);
               flags.push(snapshot.val());
