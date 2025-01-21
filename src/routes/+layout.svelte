@@ -6,7 +6,7 @@
     let loaded = false;
 
    $: {
-    if (!$user && $page?.routes?.id === '/' || $page?.routes?.id === '/login'){
+    if (!$user && $page?.route?.id === '/' || $page?.route?.id === '/login'){
         loaded = true;
         console.log("CASE 1:", $user);
     } else if(!$user) {
