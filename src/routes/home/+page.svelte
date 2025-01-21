@@ -4,6 +4,8 @@
     import { base } from "$app/paths";
     import { onMount } from "svelte";
 
+    let version = "v1.0.0";
+
     onMount(() => {
         setTimeout(() => {
             $visible = true;
