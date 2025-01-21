@@ -31,6 +31,6 @@ onAuthStateChanged(auth, (firebaseUser) => {
     user.set(userData); // Usa il metodo set per aggiornare lo store
   } else {
     console.log("USER STORE NULL");
-    //user.set(null); // Usa il metodo set per resettare lo store
+    user.set(null); // Usa il metodo set per resettare lo store
   }
 });

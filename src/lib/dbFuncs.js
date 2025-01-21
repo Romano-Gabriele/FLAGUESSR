@@ -9,6 +9,8 @@ export let updateData = async (uid, field, value) => {
     return;
   }
 
+  console.log('creazione utente user:', uid)
+
   let updates = 
     {
         [`users/${uid}/${field}`]: value
@@ -36,6 +38,7 @@ export async function getUserData(uid) {
           }
           else {
               console.error("Nessun dato trovato per questo utente");
+              userData = null;
           }
   } catch (error) {
       console.error("Errore nel recupero dei dati:", error);
