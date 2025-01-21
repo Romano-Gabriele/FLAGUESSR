@@ -1,18 +1,21 @@
 <script>
     import { visible } from "../stores/style";
     import { user } from "../stores/auth";
+    import { page } from "$app/stores"
 
     let loaded = false;
 
-    while (loaded != true) {
-        if ($user != undefined){
-            loaded = true;
-            console.log('CASE 1:', $user);
-        } else {
-            loaded = false;
-            console.log('CASE 2:', $user);
-        }
-    }
+   $: {
+    if (!$user && $page?.routes?.id === '/' || $page?.routes?.id === '/login'){
+        loaded = true;
+        console.log("CASE 1:", $user);
+    } else if(!$user) {
+        loaded = false;
+        console.log("CASE 2:", $user);
+    } else {
+        loaded = true;
+    } 
+   }
 </script>
 
 <header class="{$visible ? 'slide-down' : ''}">
