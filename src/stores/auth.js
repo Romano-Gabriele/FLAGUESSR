@@ -4,7 +4,7 @@ import { auth } from "../lib/firebase";
 import { goto } from "$app/navigation";
 import { base } from "$app/paths";
 
-export let user = writable(null);
+export let user = writable([]);
 export let sign_up = writable(false);
 export let visible = writable(false);
 
@@ -31,6 +31,6 @@ onAuthStateChanged(auth, (firebaseUser) => {
     user.set(userData); // Usa il metodo set per aggiornare lo store
   } else {
     console.log("USER STORE NULL");
-    user.set(null); // Usa il metodo set per resettare lo store
+    //user.set(null); // Usa il metodo set per resettare lo store
   }
 });

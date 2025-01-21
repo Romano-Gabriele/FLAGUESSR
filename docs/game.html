@@ -8,18 +8,18 @@
 		
 		<link href="./_app/immutable/assets/0.b548a98e.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/3.989d8b94.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.befe10d1.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.1a085c30.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.33d1dcae.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.e27e9ff8.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.bfda5bec.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.09a9c47a.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.70dc7e6b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/style.c9552933.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/auth.c4f1d8dc.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/3.2922e0cc.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.5ccf06aa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.623905e5.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.c87d1ea5.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.68c99f50.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/style.dce82e52.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/auth.02818a91.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/3.88a31d69.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/flagname.94d34076.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/helper.5998285d.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/dbFuncs.2f1fc082.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/helper.0d6b4572.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/dbFuncs.e5e7f65d.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
@@ -29,13 +29,21 @@
 <header class=" svelte-1bu6pd1"><img src="logos/flaguessr-icon.png" alt="flaguessr_icon" class="svelte-1bu6pd1">
     <img src="logos/flaguessr_logo.png" alt="flaguessr_Logo" class="svelte-1bu6pd1"></header>
 
+<main class="svelte-1bu6pd1"><div class="score-container svelte-nzon3y"><div class="score svelte-nzon3y">Score: 0</div></div>
 
+<div class="container svelte-nzon3y"><div class="flag svelte-nzon3y"><img alt="flag"></div>
+    <button class="option top left svelte-nzon3y"><h2>undefined</h2></button>
+    <button class="option top right svelte-nzon3y"><h2>undefined</h2></button>
+    <button class="option left svelte-nzon3y"><h2>undefined</h2></button>
+    <button class="option right svelte-nzon3y"><h2>undefined</h2></button></div>
+
+</main>
 
 
 			
 			<script>
 				{
-					__sveltekit_1ktj2xf = {
+					__sveltekit_gyxwnv = {
 						assets: "/FLAGUESSR",
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
@@ -46,8 +54,8 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.befe10d1.js"),
-						import("./_app/immutable/entry/app.09a9c47a.js")
+						import("./_app/immutable/entry/start.1a085c30.js"),
+						import("./_app/immutable/entry/app.c87d1ea5.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 3],

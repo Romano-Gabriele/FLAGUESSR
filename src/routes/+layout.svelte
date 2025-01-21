@@ -2,17 +2,17 @@
     import { visible } from "../stores/style";
     import { user } from "../stores/auth";
 
-    let loaded = true;
+    let loaded = false;
 
-    $: {
-      if ($user != undefined){
+    while (loaded != true) {
+        if ($user != undefined){
             loaded = true;
             console.log('CASE 1:', $user);
-      } else {
+        } else {
             loaded = false;
             console.log('CASE 2:', $user);
-      }
-    };
+        }
+    }
 </script>
 
 <header class="{$visible ? 'slide-down' : ''}">
@@ -20,7 +20,7 @@
     <img src="logos/flaguessr_logo.png" alt="flaguessr_Logo">
 </header>
 
-{#if loaded}
+{#if loaded == true}
     <main>
         <slot />
     </main>
