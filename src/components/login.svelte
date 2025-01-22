@@ -7,6 +7,7 @@
   import { updateUser } from "../lib/helper";
   import { getUserData, updateData } from "../lib/dbFuncs";
   import { onMount } from "svelte";
+  import { checkUser } from "../lib/helper";
   import { base } from "$app/paths";
 
   let email = "";
@@ -27,7 +28,6 @@
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      await updateUser($user.uid);
       goto(`${base}/home`);
     } catch (err) {
       error = err.message;
@@ -37,15 +37,7 @@
   const signInWith = async (provider) => {
     try {
       await signInWithPopup(auth, provider);
-      let exists = await getUserData($user.uid);
-      if(!exists) {
-        console.log(1)
-        await updateData($user.uid, "email", $user.email);
-        await updateData($user.uid, "played", 0);
-        await updateData($user.uid, "last", 0);
-        await updateData($user.uid, "best", 0);
-      }
-      await updateUser($user.uid);
+      await checkUser($user.uid, $user.email, "GoogleAuth");
       goto(`${base}/home`);
     } catch (e) {
       error = e.message;
