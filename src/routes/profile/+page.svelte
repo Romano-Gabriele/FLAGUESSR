@@ -4,7 +4,7 @@
     import { getUserData } from "../../lib/dbFuncs";
     import { base } from "$app/paths";
     import { onMount } from "svelte";
-    import { visible } from "../../stores/auth";
+    import { visible } from "../../stores/style";
     
     let current = 0;
     let username = $user.displayName;
@@ -12,9 +12,7 @@
     let stats = [];
 
     onMount(async () => {
-        setTimeout(() => {
-            $visible = true;
-        }, 250);
+        setTimeout(() => $visible = true, 250);
         stats = await getUserData($user.uid);
         console.log(stats);
     });

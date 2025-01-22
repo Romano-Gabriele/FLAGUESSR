@@ -7,9 +7,7 @@
     let version = "v1.0.0";
 
     onMount(() => {
-        setTimeout(() => {
-            $visible = true;
-        }, 250);
+        setTimeout(() => $visible = true, 250);
     });
 
     let current = 1;
