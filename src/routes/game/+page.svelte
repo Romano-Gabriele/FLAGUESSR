@@ -6,11 +6,15 @@
     import { user } from "../../stores/auth";
     import { updateUser } from "../../lib/helper";
     import { updateData } from "../../lib/dbFuncs";
+    import { visible } from "../../stores/auth";
 
     let data = [];
     let end = 0;
 
     onMount(() => {
+        setTimeout(() => {
+            $visible = true;
+        }, 250);
         const storedData = sessionStorage.getItem("flags");
         if (storedData) {
             data = JSON.parse(storedData);

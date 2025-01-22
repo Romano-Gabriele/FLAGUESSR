@@ -4,10 +4,14 @@
     import Flag from "../../components/flag.svelte";
     import Flagname from "../../components/flagname.svelte";
     import Taskbar from "../../components/taskbar.svelte";
+    import { visible } from "../../stores/auth";
 
     let data;
 
     onMount(() => {
+        setTimeout(() => {
+            $visible = true;
+        }, 250);
         data = JSON.parse(sessionStorage.getItem('flags'));
         console.log(data);
         changeFlag();
