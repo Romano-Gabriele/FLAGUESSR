@@ -5,5 +5,8 @@
 <img {src} alt="flag">
 
 <style>
-    
+    img {
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
 </style>

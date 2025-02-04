@@ -159,6 +159,7 @@
         color: white;
         font-weight: bold;
         text-transform: uppercase;
+        font-size: 1.5rem;
         transition:
             transform 0.3s,
             box-shadow 0.3s;
@@ -190,15 +191,74 @@
         width: 100%;
         height: 100%;
         padding: 20px;
-        position: fixed; /* Posizione fissa per rimanere visibile sopra il contenuto */
+        position: fixed;
         top: 0;
         left: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: rgba(0, 0, 0, 0.25); /* Semi-trasparente per il background */
-        backdrop-filter: blur(10px); /* Aggiungi la sfocatura dello sfondo */
-        border-radius: 12px; /* Angoli arrotondati */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Ombra per dare profondità */
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Media Queries for Mobile Devices */
+    @media screen and (max-width: 768px) {
+        .score-container {
+            top: 10%;
+            right: 5%;
+            padding: 1%;
+        }
+
+        .score {
+            font-size: 1.2em;
+        }
+
+        .container {
+            padding-top: 25%;
+        }
+
+        .flag {
+            width: 80%;
+        }
+
+        .option {
+            width: 80%;
+            height: 50%;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        .left, .right {
+            margin: 0;
+            justify-self: center;
+        }
+
+        .top {
+            margin-bottom: 5%;
+        }
+    }
+
+    /* Media Queries for Small Mobile Devices */
+    @media screen and (max-width: 480px) {
+        .score-container {
+            top: 7.5%;
+            right: 3%;
+        }
+
+        .flag {
+            width: 90%;
+        }
+
+        .option {
+            width: 90%;
+            height: 25%;
+            font-size: 0.8em;
+        }
+
+        .popup {
+            padding: 10px;
+        }
     }
 </style>

@@ -99,4 +99,36 @@
       transform: rotate(360deg);
     }
   }
+
+  @media (max-width: 768px) {
+    .container {
+      gap: 1rem;
+    }
+    
+    .loader {
+      transform: scale(0.6);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo {
+      width: 80vw;
+    }
+    
+    .loader {
+      transform: scale(0.5);
+    }
+  }
+
+  /* Handle very small screens */
+  @media (max-height: 500px) {
+    .container {
+      padding: 0.5rem;
+      gap: 0.5rem;
+    }
+    
+    .logo {
+      width: 40vw;
+    }
+  }
 </style>
