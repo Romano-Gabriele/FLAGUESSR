@@ -11,8 +11,7 @@ const config = {
       strict: true,
     }),
     paths: {
-      // base: process.argv.includes('dev') ? '' : '/FLAGUESSR',  // Lasciamo la base vuota se il sito è direttamente nella root
-      base: '/FLAGUESSR'
+      base: process.argv.includes('dev') ? '' : '/FLAGUESSR',  // Lasciamo la base vuota se il sito è direttamente nella root
     },
   },
 };
