@@ -6,58 +6,29 @@
 		<meta name="viewport" content="width=device-width" />
 		<!-- <base href="/FLAGUESSR/" /> -->
 		
-		<link href="./_app/immutable/assets/0.b548a98e.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/2.67e48ae9.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.001ab44e.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.e02442de.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.d03c3087.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.df092ad7.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.a27f5db0.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.18f0d2e2.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/style.7efbf858.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/auth.40e1625b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/stores.af6a097d.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.753ebe9c.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/helper.e157ec09.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/dbFuncs.2036f697.js">
+		<link rel="modulepreload" href="/FLAGUESSR/_app/immutable/entry/start.8c5df811.js">
+		<link rel="modulepreload" href="/FLAGUESSR/_app/immutable/chunks/index.e02442de.js">
+		<link rel="modulepreload" href="/FLAGUESSR/_app/immutable/chunks/singletons.65038013.js">
+		<link rel="modulepreload" href="/FLAGUESSR/_app/immutable/chunks/paths.b3074db7.js">
+		<link rel="modulepreload" href="/FLAGUESSR/_app/immutable/entry/app.1757ac17.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
-
-
-
-<header class=" svelte-1bu6pd1"><img src="logos/flaguessr-icon.png" alt="flaguessr_icon" class="svelte-1bu6pd1">
-    <img src="logos/flaguessr_logo.png" alt="flaguessr_Logo" class="svelte-1bu6pd1"></header>
-
-<main class="svelte-1bu6pd1"><div class="container svelte-157ynnl"><img src="logos/flaguessr_logo.png" alt="Flaguessr Logo" class="logo svelte-157ynnl">
-  <div class="loader svelte-157ynnl"><div class="intern svelte-157ynnl"></div>
-    <div class="external-shadow svelte-157ynnl"><div class="central svelte-157ynnl"></div></div></div>
-</div></main>
-
-
-			
 			<script>
 				{
-					__sveltekit_1h3t0s1 = {
+					__sveltekit_tw60ak = {
 						assets: "/FLAGUESSR",
-						base: new URL(".", location).pathname.slice(0, -1),
+						base: "/FLAGUESSR",
 						env: {}
 					};
 
 					const element = document.currentScript.parentElement;
 
-					const data = [null,null];
-
 					Promise.all([
-						import("./_app/immutable/entry/start.001ab44e.js"),
-						import("./_app/immutable/entry/app.a27f5db0.js")
+						import("/FLAGUESSR/_app/immutable/entry/start.8c5df811.js"),
+						import("/FLAGUESSR/_app/immutable/entry/app.1757ac17.js")
 					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 2],
-							data,
-							form: null,
-							error: null
-						});
+						kit.start(app, element);
 					});
 				}
 			</script>
