@@ -2,12 +2,10 @@
   import { auth } from "../lib/firebase";
   import { createUserWithEmailAndPassword } from "firebase/auth";
   import { sign_up, visible } from "../stores/auth";
-  import { goto } from "$app/navigation";
   import { onMount } from "svelte";
   import { Eye, EyeOff } from "lucide-svelte";
   import { user } from "../stores/auth";
   import { checkUser } from "../lib/helper";
-  import { base } from "$app/paths";
 
   let email = "";
   let password = "";
