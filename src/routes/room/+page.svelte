@@ -1,5 +1,6 @@
 <script>
     import { get, ref, update, child } from "firebase/database";
+    import { onValue } from "firebase/database";
     import { onDestroy } from 'svelte';
     import { db } from "../../lib/firebase";
     import { user } from "../../stores/auth";
@@ -63,9 +64,9 @@
     }
 
     if ($room_request.action == "create")
-        create_room($room_request.name, rand_room_id);
+        create_room($room_request.name, rand_room_id).then(() => listenToGameStart());
     else
-        join_room($room_request.name, $room_request.code);
+        join_room($room_request.name, $room_request.code).then(() => listenToGameStart());
 
     async function roomExists(room_id) {
         try {
@@ -147,9 +148,8 @@
         ready = !ready;
         await updateStatus();
 
-        // if(ready)
-        //     if(await check_ready());
-        //         game();
+        if(ready == true && await check_ready() == true)
+            game();
     }
 
     $: ready_text = ready ? "Not ready" : "Ready";
@@ -168,7 +168,8 @@
             if (countdown <= 0) {
                 clearInterval(countdownInterval);
                 // Start the game here
-                alert("Game starting now!");
+                console.log("Game starting");
+                stopCountdown();
                 // You would typically call a function here to start the game
             }
         }, 1000);
@@ -183,9 +184,31 @@
         if (countdownInterval) clearInterval(countdownInterval);
     });
 
-    function game() {
+    async function game() {
+        await update(ref(db), {
+            [`rooms/${$room_request.code}/game_started`]: true
+        });
         startCountdown();
     }
+
+
+    let gameStartedUnsub;
+
+    function listenToGameStart() {
+        const gameStartedRef = ref(db, `rooms/${$room_request.code}/game_started`);
+
+        gameStartedUnsub = onValue(gameStartedRef, (snapshot) => {
+            const started = snapshot.val();
+            if (started === true) {
+                startCountdown();
+            }
+        });
+    }
+
+    onDestroy(() => {
+        if (countdownInterval) clearInterval(countdownInterval);
+        if (gameStartedUnsub) gameStartedUnsub(); // rimuovi il listener di Firebase
+    });
 </script>
 
 <div class="container">
